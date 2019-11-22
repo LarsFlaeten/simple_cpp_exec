@@ -1,15 +1,10 @@
-set(EXENAME hello_world)
 
-# Sources
-include_directories("${PROJECT_SOURCE_DIR}" "${PROJECT_SOURCE_DIR}/libraries" "${CMAKE_CURRENT_SOURCE_DIR}")
-file(GLOB SOURCE_FILES *.cpp)
+message(STATUS "BUILDING COMPLETE PROJECT")
 
-# Add defines for exe build
-# add_definitions("-DXXX=")
+# Build module first
+add_subdirectory(module)
 
-add_executable(${EXENAME} ${SOURCE_FILES})
+# Then build and link the app, which uses module
+add_subdirectory(app)
 
-#Added whole archive due to the "plug-in usage"
-set(LIBS "")
-target_link_libraries(${EXENAME} ${LIBS})
 
